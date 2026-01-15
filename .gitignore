@@ -5,12 +5,21 @@ desktop.ini
 *.swp
 *.swo
 *~
+*.tmp
+*.temp
+*.bak
 
 # Editor/IDE folders
 .vs/
-.idea/
 .vscode/
+.idea/
 .cursor/
+
+# Claude/AI tools
+.claude/*
+!.claude/settings.json
+.playwright-mcp/
+tmpclaude-*/
 
 # Certificates
 https/
@@ -19,8 +28,11 @@ https/
 *.crt
 *.key
 
-# Claude/AI tools
-tmpclaude-*/
+# Environment and secrets
+.env
+.env.*
+!.env.example
+*.local
 
 # .NET
 bin/
@@ -34,12 +46,13 @@ packages/
 
 # Node/Frontend
 node_modules/
+.pnpm-store/
 dist/
+build/
+out/
 .output/
 .nuxt/
-*.local
-.env
-.env.*
+.astro/
 
 # Logs
 logs/
@@ -47,7 +60,11 @@ logs/
 npm-debug.log*
 pnpm-debug.log*
 
-# OS generated
-*.tmp
-*.temp
-*.bak
+# Cache
+.cache/
+*.cache
+
+# Test artifacts
+playwright-report/
+test-results/
+coverage/

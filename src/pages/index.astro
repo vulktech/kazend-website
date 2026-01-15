@@ -1,0 +1,86 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import FeatureCard from '../components/FeatureCard.astro';
+
+const features = [
+  {
+    number: "01",
+    title: "Client Management",
+    description: "Keep track of all your clients, their preferences, and communication history in one centralized hub.",
+    offset: "",
+    delay: "delay-400"
+  },
+  {
+    number: "02",
+    title: "Property Listings",
+    description: "Organize and manage your entire property portfolio with rich media galleries and detailed analytics.",
+    offset: "lg:ml-8",
+    delay: "delay-500"
+  },
+  {
+    number: "03",
+    title: "Deal Pipeline",
+    description: "Track every deal from first contact to closing with our intuitive Kanban-style pipeline view.",
+    offset: "lg:ml-4",
+    delay: "delay-600"
+  }
+];
+---
+
+<Layout title="Kazend - The Platform That Puts Realtors First">
+  <Header launchYear="2026" />
+
+  <!-- Main Content -->
+  <main class="flex-1 flex flex-col justify-center px-6 py-4 md:py-6 lg:py-8">
+    <div class="max-w-7xl mx-auto w-full">
+      <!-- Hero Section -->
+      <div class="grid lg:grid-cols-12 gap-8 lg:gap-8 items-center">
+        <!-- Left Column - Text Content -->
+        <div class="lg:col-span-6 xl:col-span-5">
+          <div class="relative">
+            <!-- Decorative line -->
+            <div class="h-px w-16 bg-gold mb-6 animate-line-grow delay-200"></div>
+
+            <h1 class="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-display font-bold text-cream mb-4 leading-[1.1] tracking-tight animate-fade-up delay-300">
+              The Platform That Puts
+              <span class="text-gradient-gold block mt-2">Realtors First</span>
+            </h1>
+
+            <p class="text-lg md:text-xl text-muted font-light leading-relaxed max-w-lg animate-fade-up delay-400">
+              Manage your clients, properties, and deals all in one place. Built by agents, for agents, to help you close more deals.
+            </p>
+
+            <!-- Floating decorative element -->
+            <div class="hidden xl:block absolute -left-16 top-1/2 -translate-y-1/2 animate-float">
+              <div class="w-1 h-24 bg-gradient-to-b from-transparent via-gold/30 to-transparent"></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column - Feature Cards -->
+        <div class="lg:col-span-6 xl:col-span-7 lg:pl-8">
+          <div class="relative">
+            <!-- Decorative frame -->
+            <div class="absolute -inset-4 border border-stone/30 pointer-events-none corner-accent hidden lg:block"></div>
+
+            <div class="grid gap-3 relative diagonal-pattern p-1">
+              {features.map((feature) => (
+                <FeatureCard
+                  number={feature.number}
+                  title={feature.title}
+                  description={feature.description}
+                  offset={feature.offset}
+                  delay={feature.delay}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
