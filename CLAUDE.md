@@ -1,0 +1,1 @@
+C:/Users/akires47/workspace/kazend-website/AGENTS.md

@@ -1,0 +1,28 @@
+---
+interface Props {
+  launchDate?: string;
+}
+
+const { launchDate = "Spring 2025" } = Astro.props;
+---
+
+<header class="p-4 md:p-6 lg:p-8">
+  <div class="max-w-7xl mx-auto flex items-center justify-between">
+    <!-- Logo -->
+    <a href="/" class="flex items-center gap-3 animate-slide-in group">
+      <div class="w-11 h-11 border border-gold/30 flex items-center justify-center relative overflow-hidden transition-all duration-300 group-hover:border-gold/60">
+        <div class="absolute inset-0 bg-gold/5 transition-all duration-300 group-hover:bg-gold/10"></div>
+        <span class="text-gold font-display font-bold text-xl relative z-10 transition-transform duration-300 group-hover:scale-110">K</span>
+      </div>
+      <span class="text-xl font-display font-semibold tracking-wide text-cream transition-colors duration-300 group-hover:text-gold">KAZEND</span>
+    </a>
+
+    <!-- Launch Badge -->
+    <div class="hidden md:flex items-center gap-3 animate-fade-in delay-300">
+      <div class="flex items-center gap-2 px-4 py-2 bg-stone/30 border border-stone/50 rounded-full">
+        <span class="w-2 h-2 bg-gold rounded-full animate-pulse-glow"></span>
+        <span class="text-cream/80 text-sm font-medium">{launchDate}</span>
+      </div>
+    </div>
+  </div>
+</header>

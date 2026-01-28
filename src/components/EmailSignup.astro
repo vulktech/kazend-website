@@ -1,0 +1,72 @@
+---
+interface Props {
+  variant?: 'default' | 'compact';
+}
+
+const { variant = 'default' } = Astro.props;
+const isCompact = variant === 'compact';
+---
+
+<form
+  action="https://formspree.io/f/your-form-id"
+  method="POST"
+  class:list={[
+    "w-full",
+    isCompact ? "max-w-md" : "max-w-lg"
+  ]}
+>
+  <div class:list={[
+    "flex gap-3",
+    isCompact ? "flex-col sm:flex-row" : "flex-col md:flex-row"
+  ]}>
+    <input
+      type="email"
+      name="email"
+      required
+      disabled
+      placeholder="Enter your email"
+      class:list={[
+        "email-input flex-1 px-5 py-4 rounded-lg text-cream font-medium opacity-60 cursor-not-allowed",
+        isCompact ? "text-sm" : "text-base"
+      ]}
+    />
+    <button
+      type="submit"
+      disabled
+      class:list={[
+        "submit-btn px-8 py-4 rounded-lg text-charcoal font-semibold whitespace-nowrap opacity-60 cursor-not-allowed",
+        isCompact ? "text-sm" : "text-base"
+      ]}
+    >
+      Coming Soon
+    </button>
+  </div>
+  <p class="text-muted/60 text-xs mt-3">
+    Join the waitlist. No spam, unsubscribe anytime.
+  </p>
+</form>
+
+<script>
+  const form = document.querySelector('form');
+  form?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(form);
+    const email = formData.get('email');
+
+    // For now, just show a success message
+    // Replace with actual form submission when backend is ready
+    const button = form.querySelector('button');
+    const originalText = button?.textContent;
+
+    if (button) {
+      button.textContent = 'Thanks!';
+      button.classList.add('bg-green-600');
+
+      setTimeout(() => {
+        button.textContent = originalText || 'Get Early Access';
+        button.classList.remove('bg-green-600');
+        form.reset();
+      }, 3000);
+    }
+  });
+</script>
